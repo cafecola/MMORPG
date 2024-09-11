@@ -1,0 +1,9 @@
+﻿Apks
+ScreenShots
+ScreenShots
+Tools/PacketGenerator/bin
+Tools/PacketGenerator/obj
+Client
+#Client/.idea
+#Client/ServerData
+#Client/Assets/@Scripts/Packet/Generated
