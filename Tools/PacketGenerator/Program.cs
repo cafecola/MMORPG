@@ -1,4 +1,3 @@
-﻿
 using CommandLine;
 
 namespace PacketGenerator
@@ -12,7 +11,7 @@ namespace PacketGenerator
 
 	public class Options
 	{
-		[Option('o', "outputPath", Required = true, HelpText = "Set output path. ex) Server/GameServer/Packet/Generated/ or Client/Assets/Scripts/Packet/Generated/ (root = M2/부터 경로)")]
+		[Option('o', "outputPath", Required = true, HelpText = "Set output path. ex) Server/GameServer/Packet/Generated/ or Client/Assets/Scripts/Packet/Generated/")]
 		public string outputPath { get; set; }
 		[Option('t', "programType", Required = true, HelpText = "Client = 0, GameServer = 1")]
 		public int programType { get; set; }
@@ -20,11 +19,11 @@ namespace PacketGenerator
 
 	class Program
     {
-        static string clientPacketManager;
-        static string gameServerPacketManager;
+        static string s_clientPacketManager;
+        static string s_gameServerPacketManager;
 
-        static string clientMsgIdList;
-        static string gameServerMsgIdList;
+        static string s_clientMsgIdList;
+        static string s_gameServerMsgIdList;
 
         static int s_protocolId = 1;
         static string s_outPath = "";
@@ -59,12 +58,12 @@ namespace PacketGenerator
 
             if (s_type == ProgramType.Client)
             {
-                string clientManagerText = string.Format(PacketFormat.managerFormat, clientMsgIdList, clientPacketManager);
+                string clientManagerText = string.Format(PacketFormat.managerFormat, s_clientMsgIdList, s_clientPacketManager);
                 File.WriteAllText(rootDirPath + s_outPath + "ClientPacketManager.cs", clientManagerText);
             }
             else if (s_type == ProgramType.GameServer)
             {
-                string gameServerManagerText = string.Format(PacketFormat.managerFormat, gameServerMsgIdList, gameServerPacketManager);
+                string gameServerManagerText = string.Format(PacketFormat.managerFormat, s_gameServerMsgIdList, s_gameServerPacketManager);
                 File.WriteAllText(rootDirPath + s_outPath + "GameServerPacketManager.cs", gameServerManagerText);
             }
         }
@@ -73,16 +72,16 @@ namespace PacketGenerator
         {
             if (name.StartsWith("S_")) // GameServer -> Client
             {
-                clientPacketManager += string.Format(PacketFormat.managerRegisterFormat, name);
-                gameServerMsgIdList += string.Format(PacketFormat.msgIdRegisterFormat, name, s_protocolId);
-                clientMsgIdList += string.Format(PacketFormat.msgIdRegisterFormat, name, s_protocolId);
+                s_clientPacketManager += string.Format(PacketFormat.managerRegisterFormat, name);
+                s_gameServerMsgIdList += string.Format(PacketFormat.msgIdRegisterFormat, name, s_protocolId);
+                s_clientMsgIdList += string.Format(PacketFormat.msgIdRegisterFormat, name, s_protocolId);
                 s_protocolId++;
             }
             else if (name.StartsWith("C_")) // Client -> GameServer
             {
-                gameServerPacketManager += string.Format(PacketFormat.managerRegisterFormat, name);
-                clientMsgIdList += string.Format(PacketFormat.msgIdRegisterFormat, name, s_protocolId);
-                gameServerMsgIdList += string.Format(PacketFormat.msgIdRegisterFormat, name, s_protocolId);
+                s_gameServerPacketManager += string.Format(PacketFormat.managerRegisterFormat, name);
+                s_clientMsgIdList += string.Format(PacketFormat.msgIdRegisterFormat, name, s_protocolId);
+                s_gameServerMsgIdList += string.Format(PacketFormat.msgIdRegisterFormat, name, s_protocolId);
 
                 s_protocolId++;
             }
