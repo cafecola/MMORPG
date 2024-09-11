@@ -1,0 +1,226 @@
+syntax = "proto3";
+
+package Protocol;
+option csharp_namespace = "Google.Protobuf.Protocol";
+
+import public "Enum.proto";
+import public "Struct.proto";
+
+message S_Connected 
+{
+}
+
+message C_AuthReq 
+{
+	string jwt = 1;
+}
+
+message S_AuthRes 
+{
+	bool success = 1;
+}
+
+message C_HeroListReq 
+{
+}
+
+message S_HeroListRes 
+{
+	repeated MyHeroInfo heroes = 1;
+}
+
+message C_CreateHeroReq 
+{
+	string name = 1;
+	EHeroGender gender = 2;
+	EHeroClass classType = 3;
+}
+
+message S_CreateHeroRes 
+{
+	ECreateHeroResult result = 1;
+}
+
+message C_DeleteHeroReq 
+{
+	int32 heroIndex = 1;
+}
+
+message S_DeleteHeroRes 
+{
+	bool success = 1;
+	int32 heroIndex = 2;
+}
+
+message C_EnterGame 
+{
+	int32 heroIndex = 1;
+}
+
+message S_EnterGame 
+{
+	MyHeroInfo myHeroInfo = 1;
+	bool respawn = 2;
+	repeated SkillCoolTime cooltimes = 3;
+    repeated ItemInfo items = 4;
+}
+
+message C_LeaveGame 
+{
+}
+
+message S_LeaveGame 
+{
+	ELeaveType leaveType = 1;
+}
+
+message S_Spawn 
+{
+	repeated HeroInfo heroes = 1;
+	repeated CreatureInfo creatures = 2;  
+	repeated ProjectileInfo projectiles = 3;
+	repeated ObjectInfo objects = 4;
+}
+
+message S_Despawn 
+{
+	repeated int32 objectIds = 1;
+}
+
+message C_Move 
+{
+	PositionInfo posInfo = 1;
+}
+
+message S_Move 
+{
+	int32 objectId = 1;
+	PositionInfo posInfo = 2;
+}
+
+message S_Ping 
+{
+}
+
+message C_Pong 
+{
+}
+
+message C_Skill 
+{
+	int32 templateId = 1;
+	int32 targetId = 2;
+}
+
+message S_Skill 
+{
+	int32 objectId = 1;
+	int32 templateId = 2;
+	int32 targetId = 3;
+}
+
+message S_ChangeOneStat
+{
+	int32 objectId = 1;
+	EStatType statType = 2;
+	float value = 3;
+	float diff = 4;
+	EFontType fontType = 5;
+}
+
+message S_ApplyEffect
+{
+	int32 objectId = 1;
+	int32 effectTemplateId = 2;
+	int32 effectId = 3;
+	int32 remainingTicks = 4;
+	int32 stateFlag = 5;
+}
+
+message S_RemoveEffect
+{
+	int32 objectId = 1;
+	int32 effectId = 2;
+	int32 stateFlag = 3;
+}
+
+message S_Die 
+{
+	int32 objectId = 1;
+	int32 attackerId = 2;
+}
+
+message S_RefreshStat 
+{
+	StatInfo totalStatInfo = 1;
+}
+
+message C_EquipItem 
+{
+	int64 itemDbId = 1;
+}
+
+message C_UnEquipItem 
+{
+	int64 itemDbId = 1;
+}
+
+message S_AddItem
+{
+	ItemInfo item = 1;
+}
+
+message S_UpdateItem
+{
+	ItemInfo item = 1;
+	EUpdateItemReason reason = 2;
+}
+
+message S_DeleteItem
+{
+	int64 itemDbId = 1;
+}
+
+message S_ChangeItemSlot
+{
+	int64 itemDbId = 1;
+	EItemSlotType itemSlotType = 2;
+}
+
+message C_DeleteItem 
+{
+	int64 itemDbId = 1;
+}
+
+message C_UseItem 
+{
+	int64 itemDbId = 1;
+}
+
+message S_UseItem
+{
+	int64 itemDbId = 1;
+	int32 remainingTicks = 2;
+}
+
+message S_RewardValue 
+{
+	int32 gold = 1;
+	int32 exp = 2;
+}
+
+message C_InteractionNpc
+{
+	int32 objectId = 1;
+}
+
+message C_ReqTeleport
+{
+	PositionInfo posInfo = 1;
+}
+
+message S_Blink
+{
+	int32 objectId = 1;
+	PositionInfo posInfo = 2;
+}
