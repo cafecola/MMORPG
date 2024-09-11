@@ -19,7 +19,7 @@ namespace GameServer
 		public override void Execute()
 		{
 			if (Cancel == false)
-				_action.Invoke();
+				_action?.Invoke();
 		}
 	}
 
@@ -37,7 +37,7 @@ namespace GameServer
 		public override void Execute()
 		{
 			if (Cancel == false)
-				_action.Invoke(_t1);
+				_action?.Invoke(_t1);
 		}
 	}
 
@@ -57,7 +57,7 @@ namespace GameServer
 		public override void Execute()
 		{
 			if (Cancel == false)
-				_action.Invoke(_t1, _t2);
+				_action?.Invoke(_t1, _t2);
 		}
 	}
 
@@ -79,7 +79,7 @@ namespace GameServer
 		public override void Execute()
 		{
 			if (Cancel == false)
-				_action.Invoke(_t1, _t2, _t3);
+				_action?.Invoke(_t1, _t2, _t3);
 		}
 	}
 
@@ -103,7 +103,7 @@ namespace GameServer
         public override void Execute()
         {
             if (Cancel == false)
-                _action.Invoke(_t1, _t2, _t3, _t4);
+                _action?.Invoke(_t1, _t2, _t3, _t4);
         }
     }
 
@@ -129,7 +129,7 @@ namespace GameServer
         public override void Execute()
         {
             if (Cancel == false)
-                _action.Invoke(_t1, _t2, _t3, _t4, _t5);
+                _action?.Invoke(_t1, _t2, _t3, _t4, _t5);
         }
     }
 
@@ -157,7 +157,7 @@ namespace GameServer
         public override void Execute()
         {
             if (Cancel == false)
-                _action.Invoke(_t1, _t2, _t3, _t4, _t5, _t6);
+                _action?.Invoke(_t1, _t2, _t3, _t4, _t5, _t6);
         }
     }
     public class Job<T1, T2, T3, T4, T5, T6, T7> : IJob
@@ -186,7 +186,7 @@ namespace GameServer
         public override void Execute()
         {
             if (Cancel == false)
-                _action.Invoke(_t1, _t2, _t3, _t4, _t5, _t6, _t7);
+                _action?.Invoke(_t1, _t2, _t3, _t4, _t5, _t6, _t7);
         }
     }
 }
