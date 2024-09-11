@@ -60,10 +60,6 @@ namespace Server.Data
     {
         public int TemplateId;
         public string Name;
-        public string NameTextId;
-        public string DescriptionTextID;
-        public string IconImage;
-        public string PrefabName;
         public ENpcType NpcType;
         public int ExtraCells;
         public int Range;
@@ -418,7 +414,6 @@ namespace Server.Data
     public class RewardTableData
     {
         public int TemplateId;
-        public string Name;
         public int RewardGold;
         public int RewardExp;
         public List<int> RewardDataIds;
@@ -468,7 +463,6 @@ namespace Server.Data
     public class RewardData
     {
         public int TemplateId;
-        public string Name;
         public int ItemTemplateId;
         public int Probability; // 10000분율
         public int Count;
@@ -763,8 +757,6 @@ namespace Server.Data
     {
         public int TemplateId;
         public string PrefabName;
-        public string MapNameTextId;
-        public string MapName;
         public SpawningPoolData SpawningPoolData;
         public List<NpcData> Npcs;
 
@@ -838,7 +830,6 @@ namespace Server.Data
     public class QuestData
     {
         public int TemplateId;
-        public string NameTextId;
         public EQuestType Type;
         public List<int> TaskIds;
         public int Level;
@@ -892,7 +883,6 @@ namespace Server.Data
     public class QuestTaskData
     {
         public int TemplateId;
-        public string DescriptionTextId;
         public EQuestTaskType TaskType;
 
         public List<int> ObjectiveDataIds;
