@@ -3,7 +3,7 @@ namespace GameServer.Game
 {
 	public class AggroComponent
 	{
-		private Dictionary</*ObjectId*/int, /*Damage*/float> _attackers = new Dictionary<int, float>();
+		private Dictionary</*ObjectId*/int, /*Damage*/float> _attackers = [];
 
 		public List<int> GetTopAttackers()
 		{

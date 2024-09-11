@@ -10,7 +10,7 @@ namespace GameServer.Game
         protected int _spawnRange;
 
         protected Vector2Int? _patrolDest;
-        protected Random _rand = new Random();
+        protected Random _rand = new();
 
         protected bool _returnToSpawnPos = false;
         protected int _chaseCount = 0;

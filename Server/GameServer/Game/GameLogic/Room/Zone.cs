@@ -8,9 +8,9 @@ namespace GameServer
 		public int IndexX { get; private set; }
 		public int IndexY { get; private set; }
 
-		public HashSet<Hero> Heroes { get; set; } = new HashSet<Hero>();
-        public HashSet<Monster> Monsters { get; set; } = new HashSet<Monster>();
-        public HashSet<BaseObject> Objects { get; set; } = new HashSet<BaseObject>();
+		public HashSet<Hero> Heroes { get; set; } = [];
+        public HashSet<Monster> Monsters { get; set; } = [];
+        public HashSet<BaseObject> Objects { get; set; } = [];
 
         public Zone(int x, int y)
 		{

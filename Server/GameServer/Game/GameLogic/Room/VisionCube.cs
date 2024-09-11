@@ -5,7 +5,7 @@ namespace GameServer
 	public class VisionCubeComponent
 	{
 		public Hero Owner { get; private set; }
-		public HashSet<BaseObject> PreviousObjects { get; private set; } = new HashSet<BaseObject>();
+		public HashSet<BaseObject> PreviousObjects { get; private set; } = [];
 		public IJob UpdateJob;
 
 		public VisionCubeComponent(Hero owner)
