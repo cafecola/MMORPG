@@ -40,9 +40,7 @@ namespace PacketGenerator
             string rootDirPath = "../../../";
             string protoPath = rootDirPath + "Common/Protocol/Protocol.proto";
 
-            CommandLine.Parser.Default
-                .ParseArguments<Options>(args)
-                .WithParsed(RunOptions);
+            CommandLine.Parser.Default.ParseArguments<Options>(args).WithParsed(RunOptions);
 
             foreach (string line in File.ReadAllLines(protoPath))
             {
